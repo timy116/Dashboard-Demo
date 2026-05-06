@@ -1,0 +1,33 @@
+// adjust BS primary button
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-color: #000;
+
+  // on hover
+  --bs-btn-hover-bg: #00d2eb;
+  --bs-btn-hover-border-color: #00d2eb;
+  --bs-btn-hover-color: #000;
+
+  // on active/click
+  --bs-btn-active-bg: #00b8cc;
+  --bs-btn-active-border-color: #00b8cc;
+  --bs-btn-active-color: #000;
+
+  // on focus
+  --bs-btn-focus-shadow-rgb: 0, 229, 255;
+}
+
+// adjust BS primary button outline
+.btn-outline-primary {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-hover-color: #000;
+
+  --bs-btn-active-bg: var(--color-primary);
+  --bs-btn-active-border-color: var(--color-primary);
+  --bs-btn-active-color: #000;
+}

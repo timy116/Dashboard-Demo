@@ -1,0 +1,72 @@
+.navbar-collapse {
+  @media (max-width: 991.98px) {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 0.5rem 0 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.custom-nav {
+  .nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-bottom: 8px;
+
+    &:hover {
+      color: var(--color-primary) !important;
+      text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+    }
+
+    &.active {
+      color: var(--color-primary) !important;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 15%;
+        width: 70%;
+        height: 3px;
+        background-color: var(--color-primary);
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--color-primary);
+        animation: slideIn 0.3s ease-out;
+      }
+    }
+  }
+}
+
+// theme change
+.btn-outline-custom {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  border-radius: 20px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 229, 255, 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    left: 50%;
+    opacity: 0;
+  }
+  to {
+    width: 70%;
+    left: 15%;
+    opacity: 1;
+  }
+}

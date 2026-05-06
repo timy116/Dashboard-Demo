@@ -1,0 +1,44 @@
+{
+  "name": "data.viz",
+  "version": "1.0.0",
+  "description": "<b> Endpoint: https://rtcrobot.com </b>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aarontung/data.viz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aarontung/data.viz/issues"
+  },
+  "homepage": "https://github.com/aarontung/data.viz#readme",
+  "devDependencies": {
+    "@types/bootstrap": "^5.2.10",
+    "sass": "^1.97.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-externals": "^0.6.2"
+  },
+  "dependencies": {
+    "@lit-labs/router": "^0.1.4",
+    "@popperjs/core": "^2.11.8",
+    "@shoelace-style/shoelace": "^2.20.1",
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.8",
+    "dayjs": "^1.11.19",
+    "echarts": "^6.0.0",
+    "flatpickr": "^4.6.13",
+    "lit": "^3.3.2",
+    "urlpattern-polyfill": "^10.1.0"
+  }
+}

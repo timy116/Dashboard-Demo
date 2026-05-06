@@ -1,0 +1,56 @@
+:root {
+  // Shared
+  --font-main: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira code', monospace;
+  --transition-speed: 0.3s;
+  --sidebar-width: 280px;
+  --header-height: 64px;
+
+  --app-header-height: 64px;
+  --app-sidebar-width: 300px;
+  --app-content-padding: 1.5rem;
+
+  // Dark Mode Default
+  --bg-base: #121417;
+  --bg-surface: #1e2126;
+  --bg-overlay: #2a2e35;
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0aec0;
+  --text-muted: #718096;
+
+  --color-primary: #00e5ff;
+  --color-success: #00ff9f;
+  --color-warning: #fbd38d;
+  --color-error: #f56565;
+
+  --border-color: #2d3748;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+// Light Mode
+[data-theme='light'] {
+  --bg-base: #f7fafc;
+  --bg-surface: #ffffff;
+  --bg-overlay: #edf2f7;
+
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #a0aec0;
+
+  --color-primary: #3182ce;
+  --color-success: #38a169;
+  --color-warning: #dd6b20;
+  --color-error: #e53e3e;
+
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --app-sidebar-width: 0px;
+  }
+}

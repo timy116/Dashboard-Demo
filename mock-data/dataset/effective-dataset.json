@@ -1,0 +1,67 @@
+[
+  {
+    "bot_id": "bot-1",
+    "date": "20260401",
+    "duration": 100.01
+  },
+  {
+    "bot_id": "bot-1",
+    "date": "20260403",
+    "duration": 100.36
+  },
+  {
+    "bot_id": "bot-1",
+    "date": "20260404",
+    "duration": 100.95
+  },
+  {
+    "bot_id": "bot-1",
+    "date": "20260406",
+    "duration": 100.99
+  },
+  {
+    "bot_id": "bot-2",
+    "date": "20260401",
+    "duration": 200.32
+  },
+  {
+    "bot_id": "bot-2",
+    "date": "20260403",
+    "duration": 200.72
+  },
+  {
+    "bot_id": "bot-2",
+    "date": "20260404",
+    "duration": 200.59
+  },
+  {
+    "bot_id": "bot-2",
+    "date": "20260406",
+    "duration": 200.13
+  },
+  {
+    "bot_id": "bot-3",
+    "date": "20260223",
+    "duration": 150.31
+  },
+  {
+    "bot_id": "bot-3",
+    "date": "20260224",
+    "duration": 150.5
+  },
+  {
+    "bot_id": "bot-3",
+    "date": "20260225",
+    "duration": 150.64
+  },
+  {
+    "bot_id": "bot-3",
+    "date": "20260226",
+    "duration": 150.54
+  },
+  {
+    "bot_id": "bot-3",
+    "date": "20260227",
+    "duration": 150.43
+  }
+]

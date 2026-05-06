@@ -1,0 +1,53 @@
+{
+  "bot_id": "bot-1",
+  "dataset": [
+    {
+      "date": "20260401",
+      "duration": 10.1
+    },
+    {
+      "date": "20260403",
+      "duration": 11.2
+    },
+    {
+      "date": "20260404",
+      "duration": 11.3
+    },
+    {
+      "date": "20260406",
+      "duration": 11.4
+    },
+    {
+      "date": "20260407",
+      "duration": 11.5
+    },
+    {
+      "date": "20260408",
+      "duration": 11.6
+    },
+    {
+      "date": "20260416",
+      "duration": 12.4
+    },
+    {
+      "date": "20260417",
+      "duration": 12.5
+    },
+    {
+      "date": "20260418",
+      "duration": 12.6
+    },
+    {
+      "date": "20260420",
+      "duration": 12.7
+    },
+    {
+      "date": "20260421",
+      "duration": 12.8
+    },
+    {
+      "date": "20260422",
+      "duration": 12.9
+    }
+  ]
+}

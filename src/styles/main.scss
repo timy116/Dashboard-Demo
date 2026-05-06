@@ -1,0 +1,668 @@
+/**
+ * @file main.scss
+ * @description
+ */
+
+@use 'bootstrap/scss/bootstrap';
+
+@use './variables';
+@use './components/nav.scss';
+@use './components/notify.scss';
+@use './custom/buttons.scss';
+
+// Global settings
+body {
+  background-color: var(--bs-btn-bg);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed);
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* main.scss */
+.dashboard-container {
+  min-height: 100vh;
+  display: block;
+}
+
+.dashboard-section {
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(18, 20, 23, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    opacity: 0.3;
+  }
+}
+
+.dashboard-section--time {
+  --color-accent: #ffc107;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.03) 0%, rgba(18, 20, 23, 0.8) 100%);
+}
+
+.dashboard-section--task {
+  --color-accent: #9068ff;
+  background: linear-gradient(135deg, rgba(144, 104, 255, 0.03) 0%, rgba(18, 20, 23, 0.8) 100%);
+}
+
+.dashboard-section--annotation-insights {
+  --color-accent: rgb(255, 159, 64);
+  background: linear-gradient(135deg, rgba(255, 159, 64, 0.03) 0%, rgba(18, 20, 23, 0.8) 100%);
+}
+
+.dashboard-section__header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--color-accent);
+      margin-right: 15px;
+      border-radius: 2px;
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+  }
+
+  .sub-section-toggle {
+    cursor: pointer;
+    user-select: none;
+    width: 100%;
+    justify-content: space-between;
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 0;
+      margin-left: auto;
+      margin-right: 40px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid var(--color-accent);
+      filter: drop-shadow(0 0 6px var(--color-accent));
+      transform: rotate(0deg);
+      transform-origin: center;
+      transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+      opacity: 0.9;
+    }
+
+    &[aria-expanded='false']::after {
+      transform: rotate(-90deg);
+      opacity: 0.7;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 6px;
+      border-radius: 6px;
+    }
+  }
+}
+
+.sub-section-header {
+  display: flex;
+  align-items: center;
+  margin: 2.5rem 0 1.5rem;
+
+  .accent-line {
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    margin-right: 12px;
+    opacity: 0.6;
+  }
+
+  h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+.tree-with-lines {
+  --indent-guide-width: 1px;
+}
+
+playback-tree {
+  sl-tree-item::part(base) {
+    transition: background-color 0.2s;
+    padding: 4px 0;
+  }
+}
+
+// iframe area
+.bg-black {
+  background-color: #050505 !important;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 1);
+}
+
+// mcap player
+.tooltip-long-text {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+sl-tooltip::part(body) {
+  z-index: 10000;
+}
+
+.source-url-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+  cursor: help;
+  max-width: 100%;
+}
+
+.custom-path-truncate {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+
+  @media (max-width: 1400px) {
+    max-width: 400px;
+  }
+  @media (max-width: 1200px) {
+    max-width: 250px;
+  }
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.tooltip-long-text {
+  max-width: 500px;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.section-header {
+  .accent-line {
+    width: 4px;
+    height: 20px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--color-primary);
+  }
+
+  h5 {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+  }
+}
+
+#summary-chart {
+  .echarts-label {
+    font-family: var(--font-mono);
+  }
+}
+
+// Sidebar transition and toggle button
+.sidebar-transition {
+  transition:
+    width 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+    flex 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+
+  // overwrite Bootstrap d-flex class to add min-height: 0
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+
+  // Key: Allow Flex children to shrink and trigger scrolling
+  min-height: 0;
+}
+
+.collapsed-sidebar {
+  width: 0px !important;
+  min-width: 0px !important;
+  flex: 0 0 0px !important;
+  opacity: 0;
+  border-right: none !important;
+  pointer-events: none;
+  overflow: hidden !important;
+}
+
+.toggle-btn-wrapper {
+  position: absolute;
+  top: 50%;
+  z-index: 1050;
+  transform: translateY(-50%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  sl-icon-button.sidebar-toggle-icon {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+
+    &::part(base) {
+      padding: 6px;
+    }
+
+    &:hover {
+      background: var(--color-primary);
+      color: #000;
+      box-shadow: 0 0 20px var(--color-primary);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &.collapsed {
+    left: 8px;
+  }
+
+  // expanded state on left side of sidebar
+  .custom-scrollbar {
+    overflow-y: auto !important;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      display: block;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 229, 255, 0.3);
+      border-radius: 10px;
+    }
+  }
+}
+
+// Summary table hover effect
+tfoot tr {
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: rgba(0, 229, 255, 0.1) !important;
+  }
+}
+
+/* main */
+main {
+  /* Ensure the main area always fills the remaining space and does not overflow */
+  flex: 1;
+  min-width: 0;
+}
+
+/* Force the player component container not to expand */
+playback-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+playback-annotation-table {
+  display: block;
+  height: 100%;
+  background-color: var(--bg-surface);
+}
+
+/* Annotation table container styles */
+annotation-table {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+}
+
+annotation-table .task-dropdown-panel {
+  width: 360px;
+  min-width: 360px;
+  max-width: 360px;
+  padding: 0.5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease;
+}
+
+annotation-table .task-dropdown-options {
+  max-height: 295px;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+
+annotation-table .task-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+annotation-table .task-action-btn {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  transition:
+    opacity 0.15s ease,
+    color 0.15s ease;
+  padding: 0;
+
+  &::part(base) {
+    padding: 2px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+annotation-table .task-action-btn--danger:hover {
+  color: var(--sl-color-danger-500, #dc3545);
+}
+
+annotation-table .task-dropdown-hint {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+  border-left: 3px solid var(--color-primary);
+  background: rgba(0, 229, 255, 0.08);
+  border-radius: 4px;
+}
+
+annotation-table .task-dropdown-trigger::part(base) {
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.35rem;
+  overflow: hidden;
+}
+
+annotation-table .task-dropdown-trigger::part(label) {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+annotation-table .task-dropdown {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+annotation-table .task-dropdown-trigger {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+annotation-table .task-dropdown-label,
+annotation-table .task-item-label {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+annotation-table .task-item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
+}
+
+annotation-table .task-item-row .task-item-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+annotation-table .task-item-highlight {
+  background: rgba(0, 229, 255, 0.25);
+  color: var(--text-primary);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+annotation-table .task-item-recent-badge {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.65rem;
+  color: #001418;
+  background: var(--color-primary);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.35);
+  flex: 0 0 auto;
+}
+
+annotation-table .task-item-priority-badge {
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.65rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+annotation-table .task-item-priority-badge--main {
+  color: #001418;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.35);
+}
+
+annotation-table .task-item-priority-badge--sub {
+  color: #1a1500;
+  background: #ffc107;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.35);
+}
+
+annotation-table .priority-tasks-menu {
+  padding: 0;
+  margin: 4px 0;
+}
+
+annotation-table .priority-tasks-menu sl-menu-item::part(base) {
+  padding-left: 8px;
+}
+
+annotation-table sl-menu-item::part(label) {
+  min-width: 0;
+}
+
+annotation-table sl-dropdown::part(panel) {
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease;
+}
+
+annotation-table sl-dropdown[open]::part(panel) {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+annotation-table sl-dropdown::part(panel) {
+  transform: translateY(-4px);
+  opacity: 0;
+}
+
+// Annotation row highlight effect when clicking marker
+annotation-table .annotation-row--highlighted {
+  border-color: #ffc107 !important;
+  box-shadow:
+    0 0 12px rgba(255, 193, 7, 0.5),
+    inset 0 0 20px rgba(255, 193, 7, 0.08) !important;
+  animation: annotation-highlight-pulse 1s ease-in-out 2;
+}
+
+@keyframes annotation-highlight-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(255, 193, 7, 0.5),
+      inset 0 0 20px rgba(255, 193, 7, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(255, 193, 7, 0.8),
+      inset 0 0 30px rgba(255, 193, 7, 0.15);
+  }
+}
+
+/* Make the boundary between the player and annotation table more distinct */
+main > .flex-grow-1 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix potential row width calculation delay when sidebar is collapsed */
+.row.g-0.h-100 {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+// Episode filter dropdown with BETA badge
+.episode-filter-wrapper {
+  position: relative;
+  background: var(--bg-surface);
+  padding-top: 1.25rem !important;
+
+  .beta-badge {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: #dc3545;
+    border-radius: 999px;
+    box-shadow: 0 0 6px rgba(220, 53, 69, 0.5);
+    z-index: 1;
+  }
+
+  .episode-filter-select {
+    width: 100%;
+
+    &::part(combobox) {
+      background: var(--bg-overlay);
+      border-color: var(--border-color);
+      color: var(--text-primary);
+    }
+
+    &::part(combobox):hover {
+      border-color: var(--color-primary);
+    }
+
+    &::part(combobox):focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.15);
+    }
+
+    &::part(listbox) {
+      background: var(--bg-overlay);
+      border-color: var(--border-color);
+    }
+  }
+
+  .filter-help-icon {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    cursor: help;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  .filter-help-tooltip::part(body) {
+    background: var(--bg-overlay);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .filter-help-tooltip::part(base__arrow) {
+    background: var(--bg-overlay);
+    border-color: var(--border-color);
+  }
+}
