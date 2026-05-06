@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { viteExternalsPlugin } from 'vite-plugin-externals'
 
 export default defineConfig({
-  base: './',
+  base: '/',
   plugins: [
     viteExternalsPlugin({
       echarts: 'echarts',
